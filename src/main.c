@@ -134,12 +134,23 @@ int main(int argc, char *argv[])
                         {
                             if (messageLen >= 11)
                             {
+                                static int resultCounter = 0;
+                                
                                 print_debug("Insteon standard message received!\n");
                                 if(parse_message(command, message))
                                 {
                                     goto return_error;
                                 }
-                                goto return_success;
+                                
+                                if(command == CMD_TEMP_GET_SETPOINT && resultCounter == 0 && extra > 0)
+                                {
+                                    resultCounter++;
+                                    bufferLen -= 11;
+                                }
+                                else
+                                {
+                                    goto return_success;
+                                }
                             }
                         }
                         else if (message[1] == CMD_INSTEON_EXT_RECEIVED)
