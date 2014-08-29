@@ -206,7 +206,7 @@ int main(int argc, char *argv[])
         timer++;
         if (timer > 4000)
         {
-            print_error("Timeout while waiting for bytes!");
+            print_error("Timeout while waiting for bytes!\n");
             goto return_error;
         }
     }
