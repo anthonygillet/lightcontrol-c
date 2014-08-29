@@ -142,7 +142,7 @@ int main(int argc, char *argv[])
                                     goto return_error;
                                 }
                                 
-                                if(command == CMD_TEMP_GET_SETPOINT && resultCounter == 0 && extra > 0)
+                                if(command == CMD_TEMP_GET_SETPOINT && resultCounter == 0 && extra == 3)
                                 {
                                     resultCounter++;
                                     bufferLen -= 11;
